@@ -1,7 +1,34 @@
-<h1>Welcome to your landing page.</h1>
-<p><b>Name:</b> <%= @user.name %></p>
-<p><b>Email:</b> <%= @user.email %></p>
-<%= link_to "Edit", edit_user_path(@user) %> | 
-<% if logged_in?  %>
-	<%= link_to "Log Out", logout_path, method: :delete %>
-<% end %>
+<h1 class="text-center">Welcome to your Activity Tracker.</h1>
+<div class="col-md-4">
+	<h3>Tracking Activities:</h3>
+	<% if @activities.any? %>
+		<ul>
+			<% @activities.each do |activity| %>
+				<table>
+					<tr>
+						<td>
+							<%= activity.name %> in  <%= activity.units %> |
+							<%= link_to "Delete", [activity.user, activity], method: :delete %>
+						</td>
+					</tr>
+				</table>
+			<% end %>
+		</ul>
+	<% else %>
+			<p>You aren't tracking any activities!</p>
+	<% end %>
+
+	<h3>New Activity</h3>
+	<%= form_for [@user,@activity] do |f| %>
+		<%= render 'shared/error_messages', object: @activity %>
+
+		<%= f.label :name %>
+		<%= f.text_field :name, class: "form-control" %>
+
+		<%= f.label :units %>
+		<%= f.text_field :units, class: "form-control" %>
+
+		<%= f.submit "Create", class: "btn btn-default" %>
+
+	<% end %>
+</div>

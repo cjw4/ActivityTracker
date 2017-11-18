@@ -1,0 +1,13 @@
+<% if logged_in? %>
+<header class="navbar navbar-default">
+	<div class="container">
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+				<li class="navbar-text"><%= @user.name %></li> 
+        <li><%= link_to 'Edit Profile', edit_user_path(@user) %></li>
+        <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
+      </ul>
+    </nav>  
+  </div>
+</header>
+<% end %>

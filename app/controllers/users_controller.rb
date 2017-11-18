@@ -32,6 +32,8 @@ class UsersController < ApplicationController
 
   def show
 		@user = User.find(params[:id])
+		@activity = Activity.new user_id: @user.id
+		@activities = @user.activities
 	end
 
 	private

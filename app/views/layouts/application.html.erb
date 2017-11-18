@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BasicAuth</title>
-    <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+    <title>Activity Tracker</title>
+		<%= render 'layouts/head' %>
+	</head>
+		<%= render 'layouts/header' %>
 		<body>
 			<div class="col-md-8 col-md-offset-2">
 				<% flash.each do |message_type, message| %>
