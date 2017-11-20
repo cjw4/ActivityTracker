@@ -1,0 +1,24 @@
+<h3><%= @activity.name %></h3>
+
+	<table class="table">
+	<% if @entries.any? %>
+			<% @entries.each do |entry| %>
+					<tr>
+						<td><%= entry.date %></td>
+						<td><%= entry.units %>  [<%= @activity.units %>]</td>
+						<td><%= link_to "Delete", [entry.activity, entry], method: :delete %></td>
+					</tr>
+			<% end %>
+	<% else %>
+		<tr>
+			<td>You don't have any entries!</td>
+			<td></td>
+		  <td></td>
+		</tr>
+	<% end %>
+	<tr>
+		<td><%= link_to "Add New Entry", new_activity_entry_path(@activity) %></td>
+		<td></td>
+		<td></td>
+	</tr>
+	</table>

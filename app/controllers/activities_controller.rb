@@ -1,13 +1,15 @@
 class ActivitiesController < ApplicationController
+	def new
+		@activity = current_user.activities.build
+	end
 
 	def create
-		@user = User.find(params[:user_id])
 		@activity = current_user.activities.build(activity_params)
 		if @activity.save
 			flash[:success] = "New activity has been created"
-			redirect_to user_path(@user)
+			redirect_to user_path(current_user)
 		else
-			redirect_to user_path(@user)
+			render 'new'
 		end
 	end
 
@@ -15,6 +17,8 @@ class ActivitiesController < ApplicationController
   end
 
   def show
+		@activity = current_user.activities.find(params[:id])
+		@entries = @activity.entries
   end
 
 	def destroy

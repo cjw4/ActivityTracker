@@ -11,29 +11,29 @@ class UsersController < ApplicationController
 		if @user.save
 			flash[:success] = "You have successfully signed up."
 			log_in(@user)
-			redirect_to user_path(@user)
+			redirect_to profile_path
 		else
 			render 'new'
 		end
 	end
 
   def edit
-		@user = User.find(params[:id])
+		@user = User.find_by(id: session[:user_id])
 	end
 
 	def update
 		@user = User.find(params[:id])
 		if @user.update_attributes(user_params)
-			redirect_to user_path(@user)
+			redirect_to profile_path
 		else
 			render 'edit'
 		end
 	end
 
   def show
-		@user = User.find(params[:id])
-		@activity = Activity.new user_id: @user.id
-		@activities = @user.activities
+		@activity = Activity.new user_id: current_user.id
+		@activities = current_user.activities
+		@entries = current_user.activities.entries
 	end
 
 	private
@@ -49,9 +49,9 @@ class UsersController < ApplicationController
 	end
 
 	def correct_user
-		@user = User.find(params[:id])
+		@user = User.find_by(id: session[:user_id])
 		unless current_user?(@user)
-			redirect_to user_path(current_user)
+			redirect_to profile_path
 			flash[:danger] = "You do not have access to that page!"
 		end
 	end

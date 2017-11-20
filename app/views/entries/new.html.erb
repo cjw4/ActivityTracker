@@ -1,0 +1,14 @@
+<div class="col-md-6 col-md-offset-3">
+	<h2 class="text-centered">New Entry for <%= @activity.name %></h2>
+	<%= form_for [@activity,@entry] do |f| %>
+		<%= render 'shared/error_messages', object: @entry %>
+
+		<%= f.label :date %>
+		<%= f.date_field :date, class: "form-control" %>
+
+		<%= f.label :amount %>
+		<%= f.text_field :units, placeholder: @activity.units, class: "form-control" %>
+
+		<%= f.submit "Add", class: "btn btn-default" %>
+	<% end %>
+</div>

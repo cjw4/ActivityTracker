@@ -3,8 +3,8 @@
 	<div class="container">
     <nav>
       <ul class="nav navbar-nav navbar-right">
-				<li class="navbar-text"><%= @user.name %></li> 
-        <li><%= link_to 'Edit Profile', edit_user_path(@user) %></li>
+				<li><%= link_to 'Profile Home', user_path(current_user) %></li> 
+        <li><%= link_to 'Edit Profile', editprofile_path %></li>
         <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
       </ul>
     </nav>  
