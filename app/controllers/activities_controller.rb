@@ -14,7 +14,14 @@ class ActivitiesController < ApplicationController
 	end
 
   def edit
-  end
+		@activity = Activity.find(params[:id])
+	end
+
+	def update
+		@activity = Activity.find(params[:id]) 
+		@activity.update_attributes(activity_params)
+		redirect_to current_user
+	end
 
   def show
 		@activity = current_user.activities.find(params[:id])

@@ -11,6 +11,7 @@
 						<td><%= activity.name %>  [<%= activity.units %>]</td>
 						<td><%= link_to "Add Entry", new_activity_entry_path(activity)   %></td>
 						<td><%= link_to "Show Entries", [activity.user, activity] %></td> 
+						<td><%= link_to "Edit", edit_user_activity_path(current_user, activity) %></td>
 						<td><%= link_to "Delete", [activity.user, activity], method: :delete, data: {confirm: "Are you sure?"}, class: "text-danger" %></td>
 					</tr>
 			<% end %>
@@ -18,11 +19,13 @@
 		<tr>
 			<td>You aren't tracking any activities!</td>
 			<td></td>
-		  <td></td>
+			<td></td>
+			<td></td>
 		</tr>
 	<% end %>
 	<tr>
 		<td><%= link_to "Add New Activity", new_user_activity_path(current_user) %></td>
+		<td></td>
 		<td></td>
 		<td></td>
 		<td></td>
