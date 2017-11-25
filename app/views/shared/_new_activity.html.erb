@@ -1,0 +1,12 @@
+<h3>New Activity</h3>
+
+<%= form_for [@user,@activity] do |f| %>
+	<%= render 'shared/error_messages', object: @activity %>
+
+	<%= f.text_field :name, placeholder: "Name of Activity", class: "form-control" %>
+	<br>
+	<%= f.text_field :units, placeholder: "What units to use?", class: "form-control" %>
+
+	<%= f.submit "Create", class: "btn btn-default" %>
+
+<% end %>

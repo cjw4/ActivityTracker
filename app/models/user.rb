@@ -2,6 +2,7 @@ class User < ApplicationRecord
 	has_secure_password
 	
 	has_many :activities
+	has_many :entries
 
 	validates :name, length: { minimum: 2 }
 	validates :email,	presence: true, 
