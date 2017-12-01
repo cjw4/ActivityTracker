@@ -1,4 +1,13 @@
+<div class="col-md-4">
 <h3><%= @activity.name %></h3>
+	<table class="table">
+		<tr>
+			<td><%= link_to "New Entry", new_activity_entry_path(@activity) %></td>
+			<td><%= link_to "Edit", edit_activity_path(@activity) %></td>
+			<td><%= link_to "Delete Activity", user_activity_path(current_user,@activity), method: :delete, data: { confirm: "Are you sure?" } %></td>
+		</tr>
+	</table>
+</div>
 
 	<table class="table">
 	<% if @entries.any? %>
@@ -16,9 +25,7 @@
 		  <td></td>
 		</tr>
 	<% end %>
-	<tr>
-		<td><%= link_to "Add New Entry", new_activity_entry_path(@activity) %></td>
-		<td><%= link_to "Back to Home", user_path(current_user) %></td>
-		<td></td>
-	</tr>
 	</table>
+	<div id="chartContainer">
+		<%= line_chart @plot_data, xtitle: "Date", ytitle: @activity.units %>
+	</div>

@@ -1,13 +1,13 @@
-<% if logged_in? %>
 <header class="navbar navbar-default">
+<% if logged_in? %>
 	<div class="container">
     <nav>
       <ul class="nav navbar-nav navbar-right">
-				<li><%= link_to "#{current_user.name}", user_path(current_user) %></li> 
+				<li><%= link_to "Home", user_path(current_user) %></li> 
         <li><%= link_to 'Edit Profile', editprofile_path %></li>
         <li><%= link_to 'Log Out', logout_path, method: :delete %></li>
       </ul>
     </nav>  
   </div>
-</header>
 <% end %>
+</header>

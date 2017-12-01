@@ -1,8 +1,7 @@
 class User < ApplicationRecord
 	has_secure_password
 	
-	has_many :activities
-	has_many :entries
+	has_many :activities, dependent: :destroy
 
 	validates :name, length: { minimum: 2 }
 	validates :email,	presence: true, 

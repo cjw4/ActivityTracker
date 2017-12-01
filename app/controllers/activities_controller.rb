@@ -26,6 +26,8 @@ class ActivitiesController < ApplicationController
   def show
 		@activity = current_user.activities.find(params[:id])
 		@entries = @activity.entries
+		@plot_data = Array.new
+		@entries.each { |entry| @plot_data.push([entry.date.to_formatted_s(:db),entry.units]) }
   end
 
 	def destroy
