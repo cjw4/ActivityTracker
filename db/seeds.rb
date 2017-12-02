@@ -1,4 +1,7 @@
-User.find_by(email: "example@mail.com").destroy
+
+@user_delete = User.find_by(email: "example@mail.com")
+@user_delete.destroy unless @user_delete == nil
+
 @user = User.create(name: "John Doe", email: "example@mail.com", password: "passme", password_confirmation: "passme")
 @user.activities.create(name: "Swimming", units: "km")
 @user.activities.create(name: "Running", units: "km")

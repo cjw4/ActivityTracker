@@ -4,28 +4,42 @@
 		<tr>
 			<td><%= link_to "New Entry", new_activity_entry_path(@activity) %></td>
 			<td><%= link_to "Edit", edit_activity_path(@activity) %></td>
-			<td><%= link_to "Delete Activity", user_activity_path(current_user,@activity), method: :delete, data: { confirm: "Are you sure?" } %></td>
+			<td><%= link_to "Delete Activity", user_activity_path(current_user,@activity), 
+																					method: :delete,
+																					data: { confirm: "Are you sure?" },
+																					class: "text-danger text-center"%></td>
 		</tr>
+	</table>
+<h3>Entries</h3>
+	<table class="table">
+		<tr>
+			<td><b>Date</b></td>
+			<td><b>Amount</b></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<% if @entries.any? %>
+			<% @entries.each do |entry| %>
+				<tr>
+					<td><%= entry.date %></td>
+					<td><%= entry.units %>	[<%= @activity.units %>]</td>
+					<td><%= link_to "Edit", edit_activity_entry_path(entry.activity, entry) %></td>
+					<td><%= link_to "Delete", [entry.activity, entry], 
+																			method: :delete,		
+																			class: "text-danger",
+																			data: {confirm: "Are you sure?" }%></td>
+				</tr>
+			<% end %>
+		<% else %>
+			<tr>
+				<td>You don't have any entries!</td>
+				<td></td>
+				<td></td>
+			</tr>
+		<% end %>
 	</table>
 </div>
-
-	<table class="table">
-	<% if @entries.any? %>
-			<% @entries.each do |entry| %>
-					<tr>
-						<td><%= entry.date %></td>
-						<td><%= entry.units %>  [<%= @activity.units %>]</td>
-						<td><%= link_to "Delete", [entry.activity, entry], method: :delete %></td>
-					</tr>
-			<% end %>
-	<% else %>
-		<tr>
-			<td>You don't have any entries!</td>
-			<td></td>
-		  <td></td>
-		</tr>
-	<% end %>
-	</table>
-	<div id="chartContainer">
+	<div class="col-md-8">
+		<h3 class="text-center">Plot</h3>
 		<%= line_chart @plot_data, xtitle: "Date", ytitle: @activity.units %>
 	</div>

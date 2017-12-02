@@ -1,9 +1,11 @@
-<div class="navbar navbar-inverse navbar-fixed-bottom">
-		<div class="container text-center">	
-			<ul class="nav navbar-nav">
-				<li><%= link_to "About", "#" %></li>
-				<li><%= link_to "Contact", "#" %></li>
-			</ul>
+<nav class="navbar navbar-inverse navbar-fixed-bottom" role="navigation">
+	<div class="col-md-2 col-md-offset-5">
+		<div class="text-md-center">
+			<%= link_to "About", "#", class: "navbar-text" %>
+			<%= link_to "Contact", "#", class: "navbar-text" %>
 		</div>
-</div>
-
+	</div>
+		<ul>
+			<li class="navbar-text pull-right">cjw development</li>	
+		</ul>
+</nav>
