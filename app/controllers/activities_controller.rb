@@ -25,9 +25,14 @@ class ActivitiesController < ApplicationController
 
   def show
 		@activity = current_user.activities.find(params[:id])
-		@entries = @activity.entries
+		@entries = @activity.entries.sort_by(&:date).reverse
 		@plot_data = Array.new
 		@entries.each { |entry| @plot_data.push([entry.date.to_formatted_s(:db),entry.units]) }
+
+		respond_to do |format|
+			format.html
+			format.csv { send_data @entries.to_csv }
+		end
   end
 
 	def destroy

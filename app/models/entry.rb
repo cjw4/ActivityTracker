@@ -12,5 +12,16 @@ class Entry < ApplicationRecord
 			errors.add(:date, "entries can't be made for future dates")
 		end
 	end
+
+	def self.to_csv
+		attributes = %w{date amount}
+		CSV.generate(headers: true) do |csv|
+			csv << attributes
+
+			all.each do |entry|
+				csv << entry.attributes.values_at("date", "units")
+			end
+		end
+	end
 end
 

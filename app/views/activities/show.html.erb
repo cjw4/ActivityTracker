@@ -1,16 +1,19 @@
-<div class="col-md-4">
-<h3><%= @activity.name %></h3>
+<div class="col-md-12">
+	<h1><%= @activity.name %></h1>
 	<table class="table">
 		<tr>
 			<td><%= link_to "New Entry", new_activity_entry_path(@activity) %></td>
 			<td><%= link_to "Edit", edit_activity_path(@activity) %></td>
+			<td><%= link_to "Download data as .csv",{ format: :csv } %></td>
 			<td><%= link_to "Delete Activity", user_activity_path(current_user,@activity), 
 																					method: :delete,
 																					data: { confirm: "Are you sure?" },
 																					class: "text-danger text-center"%></td>
 		</tr>
 	</table>
-<h3>Entries</h3>
+</div>
+<div class="col-md-4">
+<h3>Entries (<%= @entries.count %>)</h3>
 	<table class="table">
 		<tr>
 			<td><b>Date</b></td>
@@ -41,5 +44,7 @@
 </div>
 	<div class="col-md-8">
 		<h3 class="text-center">Plot</h3>
-		<%= line_chart @plot_data, xtitle: "Date", ytitle: @activity.units %>
+		<%= column_chart @plot_data, xtitle: "Date", ytitle: @activity.units %>
+		<br />
+		<br />
 	</div>

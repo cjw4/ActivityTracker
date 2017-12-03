@@ -11,7 +11,7 @@
 
 @user.activities.each do |activity|
 	today = Date.today
-	for i in 1..10
+	for i in 1..50
 		activity.entries.create(date: today - i.day, units: Random.rand(10))
 	end
 end

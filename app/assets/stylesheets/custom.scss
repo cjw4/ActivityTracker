@@ -5,12 +5,19 @@
 label, .btn {
 	margin-top: 10px;
 }
-.navbar {
-	padding-bottom: 100 px;
-}
 .alert {
 	margin-top: 10px;
 }
+
+/* general */
+
 .navbar li.navbar-text {
 	color: #1E90FF;
+	padding-right: 20px;
 }
+.main {
+	padding-top: 100px;
+	padding-bottom: 100px;
+}
+
+
