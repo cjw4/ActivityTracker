@@ -1,22 +1,31 @@
-<h1 class="text-center">Welcome to your Habit Tracker.</h1>
-
-<div class="col-md-6 col-sm-6 col-xs-12">
-
-	<h3>Your tracked activities:</h3>
-
+<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-12">
 	<table class="table">
+		<thead>
+			<tr>
+				<th scope="col"></th>
+				<th scope="col">Tracking since:</th>
+				<th scope="col"># Entries</th>
+			</tr>
+		</thead>
+
 	<% if @activities.any? %>
 			<% @activities.each do |activity| %>
 					<tr>
 						<td><%= link_to "#{activity.name} [#{activity.units}]", [activity.user, activity] %></td>
+						<td><%= activity.entries.order(:date).first.date %></td>
+						<td><%= activity.entries.count %></td>
 					</tr>
 			<% end %>
 	<% else %>
 		<tr>
 			<td>You aren't tracking any activities!</td>
+			<td></td>
+			<td></td>
 		</tr>
 	<% end %>
 	<tr>
+		<td></td>
+		<td></td>
 		<td></td>
 	</tr>
 	</table>

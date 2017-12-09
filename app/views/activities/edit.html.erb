@@ -8,5 +8,6 @@
 		<%= f.text_field :units, placeholder: "What units to use?", class: "form-control" %>
 
 		<%= f.submit "Create", class: "btn btn-default" %>
+		<%= link_to "Cancel", [current_user, @activity], class: "btn btn-default" %>
 
 	<% end %>
