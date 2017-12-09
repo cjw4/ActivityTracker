@@ -1,6 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+/* navigation */
 
+.navbar-text {
+	margin-left: 20px;
+}
 /* forms */
 label, .btn {
 	margin-top: 10px;
@@ -11,9 +15,6 @@ label, .btn {
 
 /* general */
 
-.navbar li.navbar-text {
-	padding-right: 20px;
-}
 .main {
 	padding-top: 50px;
 	padding-bottom: 100px;
