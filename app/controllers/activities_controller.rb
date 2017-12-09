@@ -25,13 +25,14 @@ class ActivitiesController < ApplicationController
 
   def show
 		@activity = current_user.activities.find(params[:id])
-		@entries = @activity.entries.sort_by(&:date).reverse
+		@all_entries = @activity.entries.order(date: :desc)
+		@entries = @activity.entries.order(date: :desc).paginate(:page => params[:page], :per_page => 10)
 		@plot_data = Array.new
-		@entries.each { |entry| @plot_data.push([entry.date.to_formatted_s(:db),entry.units]) }
+		@activity.entries.order(date: :desc).limit(7).each { |entry| @plot_data.push([entry.date.to_formatted_s(:db),entry.units]) }
 
 		respond_to do |format|
 			format.html
-			format.csv { send_data @entries.to_csv }
+			format.csv { send_data @all_entries.to_csv }
 		end
   end
 

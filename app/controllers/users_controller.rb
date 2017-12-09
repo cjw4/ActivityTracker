@@ -31,9 +31,7 @@ class UsersController < ApplicationController
 	end
 
   def show
-		@activity = Activity.new user_id: current_user.id
 		@activities = current_user.activities
-		@entries = current_user.activities.entries
 	end
 
 	private
