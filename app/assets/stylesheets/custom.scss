@@ -22,3 +22,16 @@ label, .btn {
 .description {
 	margin-top: 100px;
 }
+
+/* for mobile */
+
+/* xs < 768 */
+@media screen and (max-width: 767px) {
+    body {
+        font-size: 5vw;
+    }
+		.description {
+			margin-top: 20px;
+		}
+}
+
