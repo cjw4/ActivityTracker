@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require rails-ujs
 //= require turbolinks
 //= require Chart.bundle
 //= require chartkick

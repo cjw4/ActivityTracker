@@ -1,0 +1,6 @@
+$(function(){
+	$("#edit_entry_<%= @entry.id %>").html('');
+	$("#edit_entry_<%= @entry.id %>").append(<%= @entry.units %>);
+	$(".edit_entry_<%= @entry.id %>").append('<%= link_to "Edit", edit_activity_entry_path(@activity, @entry), remote: true %>')
+
+});

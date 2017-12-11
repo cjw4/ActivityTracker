@@ -15,8 +15,8 @@
 				<% @entries.each do |entry| %>
 					<tr>
 						<td><%= entry.date %></td>
-						<td><%= entry.units %>	[<%= @activity.units %>]</td>
-						<td><%= link_to "Edit", edit_activity_entry_path(entry.activity, entry) %></td>
+						<td id="entry_<%= entry.id %>"><%= entry.units %>	[<%= @activity.units %>]</td>
+						<td class="edit_entry_<%= entry.id %>"><%= link_to "Edit", edit_activity_entry_path(entry.activity, entry), remote: true %></td>
 						<td><%= link_to "Delete", [entry.activity, entry], 
 							method: :delete,		
 							class: "text-danger",
