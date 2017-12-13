@@ -1,5 +1,6 @@
 $(function(){
 	$("td#entry_<%= @entry.id %>").text('')
 	$("td.edit_entry_<%= @entry.id %>").text('');
-	$("td#entry_<%= @entry.id %>").append('<%= j render :partial => 'edit' %>')
+	$("td#entry_<%= @entry.id %>").append('<%= j render :partial => 'edit' %>');
+	$(".edit_entry_textbox").focus().select();
 });

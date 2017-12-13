@@ -1,5 +1,5 @@
 <%= form_for [@activity,@entry], :remote => true do |f| %>
-	<%= f.text_field :units, placeholder:@entry.units %>
+	<%= f.text_field :units, placeholder:@entry.units, class: "edit_entry_textbox" %>
 	<%= f.submit "Save" %>
 <% end %>
 	
