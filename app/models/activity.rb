@@ -11,4 +11,11 @@ class Activity < ApplicationRecord
 	validates :units, presence: true
 
 	before_save { self.name.capitalize! }
+	
+	def self.create_todays_entry
+		activities = self.all
+		activities.each do |activity|
+			activity.entries.create(date: Date.today, units:0)
+		end
+	end
 end

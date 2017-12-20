@@ -19,11 +19,19 @@ label, .btn {
 /* general */
 
 .main {
-	padding-top: 50px;
+	padding-top: 70px;
 	padding-bottom: 100px;
 }
 .description {
 	margin-top: 100px;
+}
+.pagination {
+	margin:0;
+	padding:0;
+}
+div.pagination {
+	margin:0;
+	padding-top:10px;
 }
 
 /* for mobile */
@@ -31,7 +39,7 @@ label, .btn {
 /* xs < 768 */
 @media screen and (max-width: 767px) {
     body {
-        font-size: 5vw;
+        font-size: 18px;
     }
 		.description {
 			margin-top: 20px;

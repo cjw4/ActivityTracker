@@ -13,4 +13,10 @@ class User < ApplicationRecord
 		self.email.downcase!
 		self.name.capitalize!
 	end
+
+	def self.create_new_activity
+		user = self.first
+		name = Time.now.to_s
+		user.activities.create(name: name, units: 'none')
+	end
 end

@@ -12,8 +12,13 @@
 			<% @activities.each do |activity| %>
 					<tr>
 						<td><%= link_to "#{activity.name} [#{activity.units}]", [activity.user, activity] %></td>
-						<td><%= activity.entries.order(:date).first.date %></td>
-						<td><%= activity.entries.count %></td>
+						<% if activity.entries.empty? %>
+							<td></td>
+							<td></td>
+						<% else %>
+							<td><%= activity.entries.order(:date).first.date %></td>
+							<td><%= activity.entries.count %></td>
+						<% end %>
 					</tr>
 			<% end %>
 	<% else %>
@@ -29,5 +34,5 @@
 		<td></td>
 	</tr>
 	</table>
-	<%= link_to "Add New Activity", new_user_activity_path(current_user), remote: true, id: "toggle_new_activity" %>
+	<%= link_to "Add New", new_user_activity_path(current_user), remote: true, id: "toggle_new_activity" %>
 </div>
