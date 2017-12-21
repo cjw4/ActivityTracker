@@ -19,19 +19,13 @@
 
 # Learn more: http://github.com/javan/whenever
 #
-case @environment
-when 'production'
 
-	every 1.day, :at => '00:01' do
-		runner 'Activity.create_todays_entry'
-	end
+every 1.day, :at => '00:01' do
+	runner 'Activity.create_todays_entry', :environment => 'production'
+end
 
-when 'development'
-
-	every 1.day, :at => '00:01' do
-		runner 'Activity.create_todays_entry'
-	end
-
+every 1.day, :at => '00:01' do
+	runner 'Activity.create_todays_entry', :environment => 'development'
 end
 
 

@@ -38,5 +38,22 @@
 	<br>
 		<h3 class="text-center">Last Week's Data</h3>
 		<%= line_chart @plot_data, xtitle: "Date", ytitle: @activity.units %>
+<table class="table">
+	<tr>
+		<% @entries.last(7).each do |entry| %>
+		<td class="text-center">
+			<%= entry.date.strftime("%a") %>
+		</td>
+		<% end %>
+		</tr>
+		<tr>
+		<% @entries.last(7).each do |entry| %>
+		<td class="text-center">
+			<%= entry.units %>
+		</td>
+		<% end %>		
+		</tr>
+</table>
 </div>
+
 
