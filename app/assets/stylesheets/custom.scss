@@ -4,7 +4,18 @@
 
 .navbar-text {
 	margin-left: 20px;
+	color: #F0FFFF;
 }
+.navbar-default {
+	background-color: #808000;
+}
+.navbar-default .navbar-nav > li > a {
+	color: #F5FFFA;
+}
+.navbar-default .navbar-header > a {
+	color: #F5FFFA;
+}
+
 /* forms */
 label, .btn {
 	margin-top: 10px;

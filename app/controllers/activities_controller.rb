@@ -26,7 +26,7 @@ class ActivitiesController < ApplicationController
   def show
 		@activity = current_user.activities.find(params[:id])
 		@all_entries = @activity.entries.order(date: :desc)
-		@entries = @activity.entries.order(date: :desc).paginate(:page => params[:page], :per_page => 10)
+		@entries = @activity.entries.order(date: :desc).paginate(:page => params[:page], :per_page => 7)
 		@plot_data = Array.new
 		@activity.entries.order(date: :desc).limit(7).each { |entry| @plot_data.push([entry.date.to_formatted_s(:db),entry.units]) }
 

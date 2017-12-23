@@ -40,19 +40,24 @@
 		<%= line_chart @plot_data, xtitle: "Date", ytitle: @activity.units %>
 <table class="table">
 	<tr>
-		<% @entries.last(7).each do |entry| %>
+		<% @entries.each do |entry| %>
 		<td class="text-center">
 			<%= entry.date.strftime("%a") %>
 		</td>
 		<% end %>
-		</tr>
-		<tr>
-		<% @entries.last(7).each do |entry| %>
-		<td class="text-center">
-			<%= entry.units %>
-		</td>
+	</tr>
+	<tr>
+		<% @entries.each do |entry| %>
+			<td id="entry_<%= entry.id %>" class="text-center"><%= entry.units %></td>
 		<% end %>		
-		</tr>
+	</tr>
+	<tr>
+		<% @entries.each do |entry| %>	
+			<td class="edit_entry_<%= entry.id %>"><%= link_to "Edit", edit_activity_entry_path(entry.activity, entry), 
+				class: "btn",
+				remote: true %></td>
+		<% end %>
+	</tr>
 </table>
 </div>
 
